@@ -1,0 +1,47 @@
+no ip unreachables
+no ip proxy-arp
+no cdp enable
+no cdp run
+no lldp transmit
+no lldp recive
+no lldp run
+no ip http server
+no ip http secure-server
+no service config
+no ip finger
+no ip bootp server
+no mop enabled
+no ip domain-lookup
+no service pad
+ip dhcp bootp ignore
+no service dhcp
+no ip domain-lookup
+no service tcp-small-servers
+no service udp-small-servers
+memory reserve console 4096
+no logging console
+no logging monitor
+no ip redirects
+ip options drop
+no ip source-route
+no ip directed-broadcast
+config terminal
+enable secret level 15 [password]
+exit
+--
+warning
+---
+
+WARNING NOTICE!
+
+This is a corparate information system, which may be accessed and used only for authorized company business by authorized personnel. Unauthorized access or use of this computer system may subject violators to criminal, civil, and/or administrative action.
+
+All information on this information system may be intercepted, recorded, read, copied, and disclosed by and to authorized personnel for official purposes, including criminal investigations. Such information includes sensitive data encrypted to comply with confidentiality and privacy requirements. Access or use of this computer system by any person, whether authorized or unauthorized, constitutes consent to these terms. There is no right of privacy in this system.
+
+This is a corparate computer that is the property of the company. It is for authorized use only. Users (authorized or unauthorized) have no explicit or implicit expectation of privacy.
+--
+login
+--
+Any or all uses of this system and all files on this system may be intercepted, monitored, recorded, copied, audited, inspected, and disclosed to authorized site, personel, and law enforcement organizations, both domestic and foreign. By using this system, the user consents to such interception, monitoring, recording, copying, auditing, inspection, and disclosure at the discretion of the corparate network security personnel.
+
+Unauthorized or improper use of this system may result in administrative disciplinary action and civil and criminal penalties. By continuing to use this system you indicate your awareness of and consent to these terms and conditions of use. LOG OFF IMMEDIATELY if you do not agree to the conditions stated in this warning.
