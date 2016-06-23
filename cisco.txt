@@ -12,6 +12,7 @@ no ip finger
 no ip bootp server
 no mop enabled
 no ip domain-lookup
+memory-size iomem 25
 no service pad
 ip dhcp bootp ignore
 no service dhcp

@@ -1,0 +1,67 @@
+!!AAA config
+clock timezone <UTC offset> zone <zone name>
+crypto key generate rsa
+dot1x system-auth-control
+enable password level 15 <password> encrypted
+file-system logging copy
+file-system logging delete-rename
+no gvrp enable
+hostname <hostname>
+ip default-gateway <Gateway IP>
+ip dhcp filtering vlan 1
+no ip domain-lookup
+ip domain-name <name>
+no ip http server
+no ip https server
+ip name-server <DNS server 1> <DNS server 2>
+no ip ssh pubkey-auth
+! no ip ssh server ! if possible
+line console
+ enable authentication default
+ exec-timeout 5 0
+ history
+ login authentication default
+ no password
+ speed 9600
+line ssh
+ enable authentication default
+ exec-timeout 2 30
+ history
+ login authentication default
+ no password
+line telnet
+ enable authentication default
+ exec-timeout 0 1
+ history
+ login authentication default
+ password <pass> encrypted
+no lldp enable
+logging buffered size 400
+logging buffered informational
+no logging console
+no logging file
+logging on
+logging <syslog server ip> severity informational description <description>
+!!mac access-list <name> !figure out later
+!! <rules>
+!management access-class console-only !if possible
+management access-list SSH_ALLOWED
+ permit ip-source <management subnet IP> mask <mask> service ssh
+management access-class SSH_ALLOWED
+management logging deny
+!priority-queue out num-of-queues !research
+!rmon event ?
+service cpu-utilization
+!!snmp-server  !config
+no sntp anycast client enable
+sntp authenticate
+sntp authentication-key <key number> md5 <key>
+no sntp broadcast client enable
+sntp client poll timer 900
+sntp server <NTP server IP> poll key <key number>
+sntp trusted-key 4
+sntp unicast client enable
+sntp unicast client poll
+!!spanning tree security
+tacacs-server host 1.1.1.1 key <key> source-ip <source ip>
+username <username> level 15 password <password> encrypted
