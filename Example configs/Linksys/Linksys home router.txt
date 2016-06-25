@@ -1,0 +1,58 @@
+Device List
+	Rename the router
+Guest Access
+	disable guest access
+Parental Controls
+	diable parental control
+Media Prioritization
+	!dosen't matter
+External storage
+	do not use external storage
+Connectivity
+	Basic
+		change network name and password
+		set the proper time zone
+		update the firmware
+		change the router password
+		enable activity lights
+	Internet Settings
+		Set MTU size to 1472
+	Local Network
+		rename the router
+		readdress the network
+		set dns servers
+		lower dhcp lease time
+		lower the pool size
+	Advanced Routing
+		null route privite ip space
+	Administration
+		disable UPnP and SIP
+		enable https management
+		turn off wifi management ! if possible
+Troubleshooting
+	Status
+		none
+	Diagnostics
+		backup router config
+	Logs
+		enable logging
+Wireless
+	Wireless
+		set you wifi channel
+		turn off 2.4/ 5ghz if channel is not used
+	MAC Filtering
+		enable
+		allow access for only the listed MAC !if possible
+			add MAC address of devices to connect
+	Wi-Fi Protected Setup
+		turn off WPS
+Security
+	Firewall
+		filter anonymous
+		filter mulitcast
+		filter ident
+		disable vpn passthrough ! if possiable
+	DMZ
+		do not put devices in the DMZ
+	Apps and Gaming
+		do not port forward
