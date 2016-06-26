@@ -1,4 +1,7 @@
-!!AAA config
+aaa authentication login BOX enable local
+aaa authentication enable BOX enable
+no aaa login-history file
+aaa logging login
 clock timezone <UTC offset> zone <zone name>
 crypto key generate rsa
 dot1x system-auth-control
@@ -15,26 +18,26 @@ no ip http server
 no ip https server
 ip name-server <DNS server 1> <DNS server 2>
 no ip ssh pubkey-auth
-! no ip ssh server ! if possible
+no ip ssh server ! if possible
 line console
- enable authentication default
+ enable authentication BOX
  exec-timeout 5 0
  history
- login authentication default
- no password
+ login authentication BOX
+ password <pass>
  speed 9600
 line ssh
- enable authentication default
+ enable authentication BOX
  exec-timeout 2 30
  history
- login authentication default
- no password
+ login authentication BOX
+ password <pass>
 line telnet
- enable authentication default
+ enable authentication BOX
  exec-timeout 0 1
  history
- login authentication default
- password <pass> encrypted
+ login authentication BOX
+ password <pass>
 no lldp enable
 logging buffered size 400
 logging buffered informational
@@ -44,15 +47,18 @@ logging on
 logging <syslog server ip> severity informational description <description>
 !!mac access-list <name> !figure out later
 !! <rules>
-!management access-class console-only !if possible
+management access-class console-only !if possible
 management access-list SSH_ALLOWED
  permit ip-source <management subnet IP> mask <mask> service ssh
 management access-class SSH_ALLOWED
 management logging deny
-!priority-queue out num-of-queues !research
-!rmon event ?
 service cpu-utilization
-!!snmp-server  !config
+snmp-server enable traps
+snmp-server contact <string>
+snmp-server group <group name> v3 priv read <group name> notify <group name>
+snmp-server location <string>
+snmp-server user <username> <group name> auth-sha <password>
+snmp-server v3-host <SNMP server IP> username traps priv
 no sntp anycast client enable
 sntp authenticate
 sntp authentication-key <key number> md5 <key>
@@ -63,5 +69,38 @@ sntp trusted-key 4
 sntp unicast client enable
 sntp unicast client poll
 !!spanning tree security
-tacacs-server host 1.1.1.1 key <key> source-ip <source ip>
+tacacs-server host <tacacs server IP> key <key> source-ip <source IP>
 username <username> level 15 password <password> encrypted
+!
+!
+!interface config
+!for all ports
+interface ethernet <port>
+description <string>
+dot1x multiple-hosts
+dot1x single-host-violation discard-shutdown trap 1
+duplex full
+flowcontrol on
+no gvrp enable
+no lldp enable
+mdix on
+port security max 2
+port security mode lock
+port security discard-shutdown trap 1
+port security
+port storm-control broadcast enable
+shutdown !if not in use
+speed <speed>
+!
+!for connected endpoints
+spanning-tree guard root
+switchport mode access
+switchport access vlan <number>
+!
+!for connected network device
+switchport mode trunk
+switchport trunk allowed vlan add <number>
+switchport trunk native vlan <bit bucket vlan>
+!
+!for connected dhcp server
+ip dhcp filtering trust
